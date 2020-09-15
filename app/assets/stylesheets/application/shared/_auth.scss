@@ -1,0 +1,66 @@
+$btnSignDark: #003200;
+$btnSignLight: #8b8b00;
+$facebookColor: #3b5998;
+
+.wrap_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+
+  .auth_logo {
+    width: 70px;
+  }
+
+  h1 {
+    margin-left: 15px;
+    color: $primaryColor;
+
+    span {
+      color: #f62323;
+    }
+  }
+}
+
+.forgot_password_link {
+  font-size: 14px;
+}
+
+.signin_signup {
+  margin-top: 25px;
+}
+
+.is_signin {
+  background-color: $btnSignDark !important;
+
+  &:hover {
+    background-color: lighten($btnSignDark, 3) !important;
+  }
+}
+
+.is_signup {
+  background-color: $btnSignLight !important;
+
+  &:hover {
+    background-color: darken($btnSignLight, 3) !important;
+  }
+}
+
+.auth_or {
+  text-align: center;
+  margin-top: 25px;
+  border-top: 1px solid darken($white, 5);
+  padding: 15px 0;
+}
+
+.is_facebook {
+  background-color: $facebookColor !important;
+
+  &:hover {
+    background-color: darken($facebookColor, 3) !important;
+  }
+}
+
+.button_recover_passaword {
+  background-color: $primaryColor !important;
+}

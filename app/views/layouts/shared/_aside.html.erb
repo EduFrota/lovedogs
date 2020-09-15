@@ -1,0 +1,68 @@
+<aside class="aside" id="aside">
+  <div class="user_box">
+    <% if current_user.image? %>
+      <%= image_tag(current_user.image_url) %>
+    <% elsif current_user.facebook_image.present? %>
+      <img src="<%= current_user.facebook_image %>">
+    <% else %>
+      <%= image_tag('hh.png') %>
+    <% end %>
+    <p><%= current_user.name %></p>
+  </div>
+
+  <div class="menu_box">
+    <nav>
+      <ul>
+        <li>
+          <%= link_to root_path, alt: 'início' do %>
+            <i class="fas fa-home link_icon"></i> Início
+          <% end %>
+        </li>
+        <li>
+          <%= link_to favorites_path, alt: 'favoritos' do %>
+            <i class="fas fa-heart link_icon"></i> Favoritos
+          <% end %>
+        </li>
+        <li>
+          <%= link_to notifications_path, alt: 'notificações' do %>
+            <i class="fas fa-bell link_icon"></i> Notificações
+            <% if notifications_count > 0 %>
+              <span class="has-text-white has-background-danger has-text-weight-bold">
+                &nbsp;<%= notifications_count() %>&nbsp;
+              </span>
+            <% end %>
+          <% end %>
+        </li>
+        <li>
+          <a href="#" class="has_submenu"><i class="fas fa-paw link_icon"></i> Meus Cães <span><i class="fas fa-arrow-right"></i></span></a>
+
+          <ul>
+            <li>
+              <%= link_to 'Adicionar', new_dog_path, alt: 'adicionar cão' %>
+            </li>
+            <li>
+              <%= link_to 'Listar', dogs_path, alt: 'listar cães' %>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="has_submenu"><i class="fas fa-search link_icon"></i> Buscar <span><i class="fas fa-arrow-right"></i></span></a>
+
+          <ul>
+            <li>
+              <%= link_to 'Conforme o cão', with_dog_data_path, alt: 'pelo cão' %>
+            </li>
+            <li>
+              <%= link_to 'Conforme o dono', with_owner_data_path, alt: 'pelo dono' %>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <%= link_to profile_path, alt: 'editar perfil' do %>
+            <i class="fas fa-user-cog link_icon"></i> Editar Perfil
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

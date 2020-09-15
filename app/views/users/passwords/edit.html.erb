@@ -1,0 +1,42 @@
+<% provide(:page_title, 'Nova senha') %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <div class="wrap_logo">
+        <%= image_tag('logo.png', class: 'auth_logo') %>
+        <h1 class="title has-text-weight-light">Love<span class="has-text-weight-normal">Dogs</span></h1>
+      </div>
+      <%= render partial: 'shared/flash' %>
+      <%= render partial: 'users/shared/error_messages', resource: resource %>
+
+      <div class="box">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="field">
+            <%= f.label :password, 'Nova senha', class: 'label is_required' %>
+            <div class="control">
+              <%= f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation, 'Confirmar nova senha', class: 'label is_required' %>
+            <div class="control">
+              <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input' %>
+            </div>
+          </div>
+
+          <br>
+
+          <%= f.submit 'Mudar minha senha', class: 'button is-primary is-fullwidth has-text-weight-bold is_signup' %>
+
+          <p class="auth_or">Ou</p>
+
+          <%= link_to 'Entrar', new_user_session_path, alt: 'registrar', class: 'button is-primary is-fullwidth has-text-weight-bold is_signin' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

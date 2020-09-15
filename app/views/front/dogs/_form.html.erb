@@ -1,0 +1,213 @@
+<% provide(:page_title, "#{page} Cão") %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-5">
+      <h2 class="title is-2 has-text-weight-light"><%= page %> Cão</h2>
+    </div>
+    <div class="column is-7 has-text-right">
+      <%= link_to 'Voltar', dogs_path, alt: 'voltar', class: 'button' %>
+    </div>
+  </div>
+
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <% if @dog.errors.any? %>
+  <div class="notification is-danger">
+    <h3 class="title is-4">
+      <%= pluralize(@dog.errors.count, 'erro', 'erros') %>
+      <%= @dog.errors.count > 1 ? 'proibiram' : 'proibiu' %> este projeto de ser salvo:
+    </h3>
+
+    <ul>
+      <% @dog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="box">
+    <%= form_with model: [@dog], local: true do |f| %>
+      <h3 class="title is-4">Informações básicas</h3>
+      <hr>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <%= f.label :name, class: 'label is_required' %>
+            <div class="control">
+              <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'input' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :birth, class: 'label is_required' %>
+            <div class="control">
+              <%= f.text_field :birth, autocomplete: 'birth', class: 'input' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <%= f.label :breed, class: 'label is_required' %>
+            <div class="control">
+              <div class="select">
+                <%= f.select(:breed, Dog::BREEDS, { include_blank: 'Escolher' }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :sex, class: 'label is_required' %>
+            <div class="control">
+              <div class="select">
+                <%= f.select(:sex, [['Macho', 1], ['Fêmea', 2]], { include_blank: 'Escolher' }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <%= f.label :temperament, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :temperament, autocomplete: 'temperament', class: 'input' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :vaccinated, class: 'label' %>
+            <div class="control">
+              <div class="select">
+                <%= f.select(:vaccinated, [['Sim', true], ['Não', false]]) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :image, class: 'label is_required' %>
+        <div class="control">
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+      </div>
+
+      <br>
+      <h3 class="title is-4">Aspectos físicos</h3>
+      <hr>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <%= f.label :size, class: 'label is_required' %>
+            <div class="control">
+              <div class="select">
+                <%= f.select(:size, Dog::SIZES, { include_blank: 'Escolher' }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :weight, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :weight, autocomplete: 'weight', class: 'input' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :length, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :length, autocomplete: 'length', class: 'input' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <%= f.label :pelage, class: 'label is_required' %>
+            <div class="control">
+              <div class="select">
+                <%= f.select(:pelage, Dog::PELAGES, { include_blank: 'Escolher' }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :pelage_color, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :pelage_color, autocomplete: 'pelage_color', class: 'input' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <h3 class="title is-4">Informações sobre pedigree</h3>
+      <hr>
+
+      <div class="field">
+        <%= f.label :pedigree, class: 'label' %>
+        <div class="control">
+          <div class="select">
+            <%= f.select(:pedigree, [['Sim', true], ['Não', false]]) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <%= f.label :mother_name, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :mother_name, autocomplete: 'mother_name', class: 'input' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <%= f.label :father_name, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :father_name, autocomplete: 'father_name', class: 'input' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :register, class: 'label' %>
+        <div class="control">
+          <%= f.text_field :register, autocomplete: 'register', class: 'input' %>
+        </div>
+      </div>
+
+      <br>
+
+      <%= f.submit nil, class: 'button is-primary' %>
+      <%= link_to 'Cancelar', dogs_path, alt: 'cancelar', class: 'button is-light' %>
+    <% end %>
+  </div>
+</div>

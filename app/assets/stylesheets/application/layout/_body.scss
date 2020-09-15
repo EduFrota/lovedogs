@@ -1,0 +1,17 @@
+html, body {
+  background-color: darken($white, 3);
+}
+
+.field {
+  .is_required::after {
+    content: " *";
+    color: red;
+  }
+}
+
+.mt-1 {
+  padding-top: 5px;
+}
+.mb-1 {
+  padding-bottom: 5px;
+}

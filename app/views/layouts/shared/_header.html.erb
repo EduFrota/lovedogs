@@ -1,0 +1,27 @@
+<header class="base_one">
+  <div class="left_side">
+    <div class="logo">
+      <%= image_tag('logo.png') %>
+    </div>
+    <div class="project_name">
+      <%= link_to root_path, alt: 'lovedogs' do %>
+        <h1 class="title"><span class="has-text-weight-light">Love</span>Dogs</h1>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+  <div class="right_side">
+    <div class="retract_button" id="retract_button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="logout_button">
+      <%= link_to destroy_user_session_path, alt: 'sair', method: :delete do %>
+        <i class="fas fa-sign-out-alt is-size-4"></i>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</header>

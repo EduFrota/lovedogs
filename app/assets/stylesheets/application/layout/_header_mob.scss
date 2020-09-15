@@ -1,0 +1,13 @@
+@media (max-width: 980px) {
+  .base_one {
+    .right_side {
+      display: flex;
+      .logout_button {
+        a {
+          color: $dark;
+        }
+        padding-top: 16px;
+      }
+    }
+  }
+}

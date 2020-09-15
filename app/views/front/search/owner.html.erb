@@ -1,0 +1,52 @@
+<% provide(:page_title, 'Informe os dados do dono') %>
+
+<div class="container">
+  <h2 class="title is-2 has-text-weight-light">Informe os dados do dono</h2>
+
+  <% if @owners.present? %>
+  <h3 class="title is-4 has-text-grey-light">Sua pesquisa retornou <%= @owners.length %> resultado(s)</h3>
+  <% end %>
+
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+  <%= render 'search_owner' %>
+
+  <% if @owners.present? %>
+    <% @owners.each do |owner| %>
+      <br>
+      <h5 class="title is-5 has-text-grey-light"><%= owner.name %></h5>
+      <hr>
+      <div class="columns is-multiline">
+        <% owner.dogs.each do |dog| %>
+        <div class="column is-3">
+          <div class="box">
+            <figure class="image list_image" id="<%= dog.id %>">
+              <%= image_tag(dog.image.to_s) %>
+            </figure>
+            <br>
+            <div class="content has-text-centered">
+              <h4 class="title is-4"><%= dog.name %></h4>
+              <% if @favorites.has_key?(dog.id) %>
+              <span class="is-size-1 heart_favorite" id="heart_<%= dog.id %>"><i class="fas fa-heart has-text-danger"></i></span>
+              <% else %>
+              <span class="is-size-1 heart_favorite" id="heart_<%= dog.id %>"><i class="far fa-heart has-text-danger"></i></span>
+              <% end %>
+              <p>
+                <%= dog.breed %> <br>
+                <%= dog.sex == 1 ? 'Macho' : 'Fêmea' %>
+              </p>
+              <p>
+                <span><i class="fas fa-user is-size-4"></i> &nbsp; <%= dog.user.name %></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+
+  <% end %>
+</div>
+
+<%= render partial: 'front/shared/dog_modal' %>

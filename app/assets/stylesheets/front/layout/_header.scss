@@ -1,0 +1,48 @@
+.base_one {
+  background-color: $primaryColor;
+  height: $headerHeight;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  .left_side {
+    display: flex;
+
+    .logo {
+      width: 35px;
+      padding-top: 6px;
+      img {
+        width: 100%;
+      }
+    }
+
+    .project_name {
+      margin-left: 10px;
+      padding-top: 6px;
+
+      h1 {
+        color: lighten($primaryColor, 27);
+      }
+    }
+  }
+
+  .right_side {
+
+    .retract_button {
+      display: none;
+    }
+
+    .logout_button {
+      a {
+        color: $dark;
+      }
+      padding-top: 16px;
+    }
+  }
+}

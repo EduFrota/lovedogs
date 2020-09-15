@@ -1,0 +1,51 @@
+<% provide(:page_title, 'Faça seu login') %>
+<div class="container">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <div class="wrap_logo">
+        <%= image_tag('logo.png', class: 'auth_logo') %>
+        <h1 class="title has-text-weight-light">Love<span class="has-text-weight-normal">Dogs</span></h1>
+      </div>
+      <%= render partial: 'shared/flash' %>
+      <div class="box">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email, class: 'label' %>
+            <div class="control">
+              <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, class: 'label' %>
+            <div class="control">
+              <%= f.password_field :password, autocomplete: 'current-password', class: 'input' %>
+            </div>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, 'Lembrar-me' %>
+            </div>
+          <% end %>
+
+          <%= link_to 'Esqueceu sua senha?', new_user_password_path, alt: 'esqueceu sua senha?', class: 'forgot_password_link' %>
+
+          <div class="signin_signup">
+            <%= f.submit 'Entrar', class: 'button is-primary is-fullwidth has-text-weight-bold is_signin' %>
+          </div>
+
+          <p class="auth_or">Ou</p>
+
+          <%= link_to 'Entrar com Facebook', user_facebook_omniauth_authorize_path, alt: 'facebook', class: 'button is-primary is-fullwidth is_facebook' %>
+
+          <br>
+          <div class="has-text-centered">
+            Ainda não é registrado? <strong><%= link_to 'CLIQUE AQUI', new_user_registration_path, alt: 'registrar', class: 'has-text-dark' %></strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

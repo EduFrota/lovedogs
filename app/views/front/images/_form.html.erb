@@ -1,0 +1,57 @@
+<% provide(:page_title, "#{page} Imagem") %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6">
+      <h2 class="title is-2 has-text-weight-light"><%= page %> Imagem</h2>
+    </div>
+    <div class="column is-6 has-text-right">
+      <%= link_to 'Voltar', dog_images_path, alt: 'voltar', class: 'button' %>
+    </div>
+  </div>
+
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <% if @image.errors.any? %>
+  <div class="notification is-danger">
+    <h3 class="title is-4">
+      <%= pluralize(@image.errors.count, 'erro', 'erros') %>
+      <%= @image.errors.count > 1 ? 'proibiram' : 'proibiu' %> esta imagem de ser salva:
+    </h3>
+
+    <ul>
+      <% @image.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="box">
+    <%= form_with model: [@dog, @image], local: true do |f| %>
+      <% if @image.image.present? %>
+      <div class="columns">
+        <div class="column is-4">
+          <div class="box">
+            <%= image_tag(@image.image.to_s, class: 'image') %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :image, class: 'label is_required' %>
+        <div class="control">
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+      </div>
+
+      <br>
+
+      <%= f.submit nil, class: 'button is-primary' %>
+      <%= link_to 'Cancelar', dog_images_path, alt: 'cancelar', class: 'button is-light' %>
+    <% end %>
+  </div>
+</div>

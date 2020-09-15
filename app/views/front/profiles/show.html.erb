@@ -1,0 +1,109 @@
+<% content_for :page_title, 'Editar Perfil' %>
+
+<div class="container">
+  <h2 class="title is-2 has-text-weight-light">Editar Perfil</h2>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <% if @profile.errors.any? %>
+    <div class="notification is-danger">
+      <h4 class="title is-4">
+        <%= pluralize(@profile.errors.count, 'erro', 'erros') %>
+        <%= @profile.errors.count > 1 ? 'proibiram' : 'proibiu' %> seu perfil de ser salvo:
+      </h4>
+
+      <ul>
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="notification is-warning">
+    <button class="delete" onclick="this.parentElement.style.display = 'none'"></button>
+
+    <h4 class="title is-4">Atenção</h4>
+    <div class="content">
+      <p>
+        - Informe a <em><strong>senha atual</strong></em> para a confirmação dos dados. <br>
+        - Caso não queira alterar sua senha, deixe os campos de <em><strong>senha</strong></em> e <em><strong>confirmar senha</strong></em> em branco.
+      </p>
+    </div>
+  </div>
+
+  <div class="box">
+    <%= form_with model: @profile, url: profile_path, method: :patch, local: true do |f| %>
+      <div class="field">
+        <%= f.label :name, class: 'label is_required' %>
+        <div class="control">
+          <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :image, class: 'label' %>
+        <div class="control">
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :email, class: 'label is_required' %>
+        <div class="control">
+          <%= f.email_field :email, autocomplete: 'email', class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :telephone, class: 'label' %>
+        <div class="control">
+          <%= f.text_field :telephone, autocomplete: 'telephone', class: 'input', maxlength: 15 %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :state, class: 'label' %>
+        <div class="control">
+          <div class="select">
+            <%= f.select(:state, User::STATES, { include_blank: 'Escolher' }) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :city, class: 'label' %>
+        <div class="control">
+          <%= f.text_field :city, autocomplete: 'city', class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: 'label' %>
+        <div class="control">
+          <%= f.password_field :password, autocomplete: 'off', class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: 'label' %>
+        <div class="control">
+          <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'input' %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password, class: 'label is_required' %>
+        <div class="control">
+          <%= f.password_field :current_password, autocomplete: 'off', class: 'input' %>
+        </div>
+      </div>
+
+      <br>
+
+      <%= f.submit 'Atualizar Perfil', class: 'button is-primary' %>
+    <% end %>
+  </div>
+</div>

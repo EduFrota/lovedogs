@@ -1,0 +1,19 @@
+<% provide(:page_title, 'Notificações') %>
+
+<div class="container">
+  <h2 class="title is-2 has-text-weight-light">Notificações</h2>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <% @favorites.each do |favorite| %>
+  <div class="box">
+    <strong><%= link_to favorite.user.name, notification_path(favorite), alt: 'visualizar', class: 'has-text-dark' %></strong> favoritou seu cão
+    <strong><%= link_to favorite.dog.name, dog_path(favorite.dog.id), alt: 'detalhes do cão', class: 'has-text-dark' %></strong> em <%= l favorite.created_at, format: :long %>
+  </div>
+  <% end %>
+
+  <% if @favorites.length == 0 %>
+    <div class="notification is-info">Nenhuma notificação encontrada.</div>
+  <% end %>
+</div>

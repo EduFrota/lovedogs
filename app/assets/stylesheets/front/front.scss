@@ -1,0 +1,16 @@
+$modal-content-width: 1024px;
+
+@import '../../../../node_modules/bulma/bulma';
+@import './layout/vars';
+@import './layout/mixins';
+@import './layout/body';
+@import './layout/header';
+@import './layout/header_mob';
+@import './layout/aside';
+@import './layout/aside_mob';
+@import './layout/main';
+@import './layout/main_mob';
+@import './layout/home';
+@import './layout/modal';
+@import './layout/login';
+@import './layout/notifications';

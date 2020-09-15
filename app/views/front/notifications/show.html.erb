@@ -1,0 +1,40 @@
+<% provide(:page_title, 'Notificação') %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column">
+      <h2 class="title is-2 has-text-weight-light">Notificação</h2>
+      <h4 class="title is-4 has-text-grey-light"><%= @favorite.user.name %> favoritou seu cão <%= @favorite.dog.name %></h4>
+    </div>
+
+    <div class="column has-text-right">
+      <%= link_to 'Voltar', notifications_path, alt: 'voltar', class: 'button' %>
+    </div>
+  </div>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <div class="columns">
+    <div class="column is-6 is-offset-3 has-text-centered">
+      <figure class="image is-128x128 notification_user_image">
+        <% if @favorite.user.image? %>
+          <%= image_tag(@favorite.user.image_url) %>
+        <% elsif @favorite.user.facebook_image.present? %>
+          <img src="<%= @favorite.user.facebook_image %>">
+        <% else %>
+          <%= image_tag('hh.png') %>
+        <% end %>
+      </figure>
+
+      <br>
+      <p class="is-size-4 has-text-weight-bold">Informações</p>
+      <p><%= @favorite.user.name %></p>
+      <p><%= @favorite.user.email %></p>
+      <p><%= @favorite.user.telephone.present? ? @favorite.user.telephone : 'Telefone não informado' %></p>
+      <% if @favorite.user.state.present? && @favorite.user.city.present? %>
+      <p><%= "#{@favorite.user.state}/#{@favorite.user.city}" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

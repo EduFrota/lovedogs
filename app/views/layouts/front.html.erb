@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield :page_title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'front', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" data-mutate-approach="sync"></script>
+    <script src="//unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js"></script>
+    <%= javascript_pack_tag 'front', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render partial: 'layouts/shared/header' %>
+    <%= render partial: 'layouts/shared/aside' %>
+    <main class="main">
+      <section class="section">
+        <%= yield %>
+      </section>
+    </main>
+  </body>
+</html>

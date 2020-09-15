@@ -1,0 +1,90 @@
+<% provide(:page_title, 'Informações sobre o seu cão') %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6">
+      <h2 class="title is-2 has-text-weight-light">Informações sobre o seu cão</h2>
+      <h3 class="title is-4 has-text-grey-light"><%= @dog.name %></h3>
+    </div>
+
+    <div class="column is-6 has-text-right">
+      <%= link_to 'Voltar', dogs_path, alt: 'voltar', class: 'button' %>
+    </div>
+  </div>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <div class="columns">
+    <div class="column is-5">
+      <%= image_tag(@dog.image.to_s, class: 'image') %>
+    </div>
+
+    <div class="column is-7">
+      <div class="table-responsive">
+        <table class="table is-bordered is-fullwidth">
+          <tr>
+            <td class="has-text-weight-bold">Nome</td>
+            <td><%= @dog.name %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Idade</td>
+            <td><%= Date.today.year.to_i - @dog.birth.to_i %> anos</td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Raça</td>
+            <td><%= @dog.breed %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Sexo</td>
+            <td><%= @dog.sex == 1 ? 'Macho' : 'Fêmea' %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Temperamento</td>
+            <td><%= @dog.temperament %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Vacina</td>
+            <td><%= @dog.vaccinated == true ? 'Sim' : 'Não' %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Tamanho</td>
+            <td><%= @dog.size %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Peso</td>
+            <td><%= @dog.weight %> kg</td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Comprimento</td>
+            <td><%= @dog.length %> cm</td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Pelagem</td>
+            <td><%= @dog.pelage %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Cor do pelo</td>
+            <td><%= @dog.pelage_color %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Pedigree</td>
+            <td><%= @dog.pedigree == true ? 'Sim' : 'Não' %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Nome da mãe</td>
+            <td><%= @dog.mother_name %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Nome da pai</td>
+            <td><%= @dog.father_name %></td>
+          </tr>
+          <tr>
+            <td class="has-text-weight-bold">Número do registro</td>
+            <td><%= @dog.register %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

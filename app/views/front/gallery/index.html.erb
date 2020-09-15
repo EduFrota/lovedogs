@@ -1,0 +1,47 @@
+<% provide(:page_title, @dog.name) %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6">
+      <h2 class="title is-2 has-text-weight-light"><%= @dog.name %></h2>
+    </div>
+
+    <div class="column is-6 has-text-right">
+      <% if @favorites.has_key?(@dog.id) %>
+      <span class="heart_favorite" id="heart_<%= @dog.id %>"><i class="fas fa-heart has-text-danger is-size-1"></i></span>
+      <% else %>
+      <span class="heart_favorite" id="heart_<%= @dog.id %>"><i class="far fa-heart has-text-danger is-size-1"></i></span>
+      <% end %>
+    </div>
+  </div>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <div class="columns is-multiline">
+    <% @images.each do |image| %>
+    <div class="column is-4">
+      <a href="<%= image.image.to_s %>" class="glightbox" data-gallery="gallery">
+        <%= image_tag(image.image.to_s, alt: 'image') %>
+      </a>
+    </div>
+    <% end %>
+  </div>
+
+  <% if @images.length == 0 %>
+    <div class="notification is-info">Nenhum cão encontrado.</div>
+  <% end %>
+
+  <div class="columns">
+    <div class="column is-6 is-offset-3 has-text-centered">
+      <p class="is-size-4 has-text-weight-bold">Informações do dono</p>
+
+      <p><%= @dog.user.name %></p>
+      <p><%= @dog.user.email %></p>
+      <p><%= @dog.user.telephone.present? ? @dog.user.telephone : 'Telefone não informado' %></p>
+      <% if @dog.user.state.present? && @dog.user.city.present? %>
+      <p><%= "#{@dog.user.state}/#{@dog.user.city}" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

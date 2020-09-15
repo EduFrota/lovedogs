@@ -1,0 +1,91 @@
+<% provide(:page_title, 'Editar Perfil') %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <%= render partial: 'shared/flash' %>
+      <%= render partial: 'users/shared/error_messages', resource: resource %>
+      <div class="box">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="field">
+            <%= f.label :name, class: 'label is_required' %>
+            <div class="control">
+              <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :image, class: 'label' %>
+            <div class="control">
+              <%= f.file_field :image %>
+              <%= f.hidden_field :image_cache %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :email, class: 'label is_required' %>
+            <div class="control">
+              <%= f.email_field :email, autocomplete: 'email', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :telephone, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :telephone, autocomplete: 'telephone', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :state, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :state, autocomplete: 'state', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :city, class: 'label' %>
+            <div class="control">
+              <%= f.text_field :city, autocomplete: 'city', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, class: 'label' %>
+            <div class="control">
+              <%= f.password_field :password, autocomplete: 'new-password', class: 'input' %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation, class: 'label' %>
+            <div class="control">
+              <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'input' %>
+            </div>
+          </div>
+
+          <br>
+
+          <%= f.submit 'Atualizar Conta', class: 'button is-primary is-fullwidth has-text-weight-bold is_signup' %>
+
+          <br>
+
+          <p class="has-text-centered">
+            <%= link_to root_path, alt: 'voltar' do %>
+              &laquo; Voltar
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3 class="title is-3">Cancelar minha conta</h3>
+
+    <div>
+      <p class="mb-1">Infeliz?</p>
+      <%= button_to "Excluir definitivamente", registration_path(resource_name), data: { confirm: "Você tem certeza?" }, method: :delete, class: 'button is-danger' %>
+    </div>
+  </div>
+</div>

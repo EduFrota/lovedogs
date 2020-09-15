@@ -1,0 +1,10 @@
+@media (max-width: 980px) {
+  .aside {
+    display: none;
+    z-index: 15;
+  }
+
+  .show_aside {
+    display: block;
+  }
+}

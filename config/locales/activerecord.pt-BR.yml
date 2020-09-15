@@ -1,0 +1,43 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+      dog:
+        one: 'Cão'
+        other: 'Cães'
+      image:
+        one: 'Imagem'
+        other: 'Imagens'
+    attributes:
+      user:
+        name: 'Nome'
+        email: 'E-mail'
+        image: 'Imagem'
+        telephone: 'Telefone'
+        state: 'Estado'
+        city: 'Cidade'
+        password: 'Senha'
+        password_confirmation: 'Confirmar senha'
+        current_password: 'Senha atual'
+      dog:
+        name: 'Nome'
+        birth: 'Ano de nascimento'
+        breed: 'Raça'
+        sex: 'Sexo'
+        temperament: 'Temperamento'
+        vaccinated: 'Vacinado'
+        image: 'Imagem'
+        length: 'Comprimento (cm)'
+        weight: 'Peso (kg)'
+        size: 'Tamanho'
+        pelage: 'Pelagem'
+        pelage_color: 'Cor do pelo'
+        mother_name: 'Nome da mãe'
+        father_name: 'Nome do pai'
+        register: 'Número de registro'
+      image:
+        image: 'Imagem'
+        dog: 'Cão'
+        dog_id: 'Cão'

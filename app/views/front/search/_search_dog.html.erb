@@ -1,0 +1,101 @@
+<div class="box">
+  <%= form_with url: with_dog_data_path, method: :get, local: true do |f| %>
+    <%= f.hidden_field :search, value: true %>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <%= f.label :by_name, 'Nome', class: 'label' %>
+          <div class="control">
+            <%= f.text_field :by_name, autofocus: true, autocomplete: 'by_name', class: 'input', value: params[:by_name] %>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <%= f.label :temperament, 'Temperamento', class: 'label' %>
+          <div class="control">
+            <%= f.text_field :temperament, autocomplete: 'temperament', class: 'input', value: params[:temperament] %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <%= f.label :breed, 'Raça', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:breed, options_for_select(Dog::BREEDS, params[:breed]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <%= f.label :sex, 'Sexo', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:sex, options_for_select([['Macho', 1], ['Fêmea', 2]], params[:sex]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <%= f.label :vaccine, 'Vacinado', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:vaccine, options_for_select([['Sim', true], ['Não', false]], params[:vaccine]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <%= f.label :height, 'Peso', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:height, options_for_select(Dog::SIZES, params[:height]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <%= f.label :pelage, 'Pelagem', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:pelage, options_for_select(Dog::PELAGES, params[:pelage]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <%= f.label :pedigree, 'Pedigree', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:pedigree, options_for_select([['Sim', true], ['Não', false]], params[:pedigree]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <%= f.submit 'Buscar', class: 'button is-primary' %>
+
+    <%= link_to('Limpar Resultado(s)', with_dog_data_path, alt: 'limpar resultados', class: 'button is-light') if @dogs.present? %>
+  <% end %>
+</div>

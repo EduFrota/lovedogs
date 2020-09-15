@@ -1,0 +1,35 @@
+<% provide(:page_title, 'Galeria de Imagens') %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6">
+      <h2 class="title is-2 has-text-weight-light">Galeria de Imagens</h2>
+    </div>
+
+    <div class="column is-6 has-text-right">
+      <%= link_to 'Voltar', dogs_path, alt: 'meus cães', class: 'button' %>
+      <%= link_to 'Nova', new_dog_image_path, alt: 'nova', class: 'button is-primary' %>
+    </div>
+  </div>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+  <div class="columns is-multiline is-vcentered">
+    <% @images.each do |image| %>
+    <div class="column is-4">
+      <div class="box">
+        <%= image_tag(image.image.to_s, class: 'image') if image.image.present? %>
+        <hr>
+        <div class="has-text-centered">
+          <%= link_to 'Editar', edit_dog_image_path(@dog, image), alt: 'editar', class: 'button is-warning', title: 'Editar' %>
+          <%= link_to 'Excluir', dog_image_path(@dog, image), method: :delete, data: { confirm: 'Você tem certeza?' }, alt: 'excluir', class: 'button is-danger', title: 'Excluir' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <% if @images.length == 0 %>
+    <div class="notification is-info">Nenhuma imagem encontrada.</div>
+  <% end %>
+</div>

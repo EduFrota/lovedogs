@@ -1,0 +1,42 @@
+<% provide(:page_title, 'Todos os Cães') %>
+
+<div class="container">
+  <h2 class="title is-2 has-text-weight-light">Todos os Cães</h2>
+  <br>
+
+  <%= render partial: 'shared/flash' %>
+
+  <div class="columns is-multiline">
+    <% @dogs.each do |dog| %>
+    <div class="column is-3">
+      <div class="box">
+        <figure class="image list_image" id="<%= dog.id %>">
+          <%= image_tag(dog.image.to_s) %>
+        </figure>
+        <br>
+        <div class="content has-text-centered">
+          <h4 class="title is-4"><%= dog.name %></h4>
+          <% if @favorites.has_key?(dog.id) %>
+          <span class="is-size-1 heart_favorite" id="heart_<%= dog.id %>"><i class="fas fa-heart has-text-danger"></i></span>
+          <% else %>
+          <span class="is-size-1 heart_favorite" id="heart_<%= dog.id %>"><i class="far fa-heart has-text-danger"></i></span>
+          <% end %>
+          <p>
+            <%= dog.breed %> <br>
+            <%= dog.sex == 1 ? 'Macho' : 'Fêmea' %>
+          </p>
+          <p>
+            <span><i class="fas fa-user is-size-4"></i> &nbsp; <%= dog.user.name %></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <% if @dogs.length == 0 %>
+    <div class="notification is-info">Nenhum cão encontrado.</div>
+  <% end %>
+</div>
+
+<%= render partial: 'front/shared/dog_modal' %>

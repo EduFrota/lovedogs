@@ -1,0 +1,29 @@
+.modal-content {
+  background-color: #ffffff;
+
+  .modal_title {
+    border-bottom: 1px solid #F0F0F0;
+    padding: 10px 15px;
+
+    .heart_favorite {
+      display: block;
+      float: right;
+      cursor: pointer;
+    }
+  }
+
+  .about_the_dog {
+    padding-left: 30px;
+    padding-bottom: 15px;
+  }
+
+  .about_the_owner {
+    border-top: 1px solid #F0F0F0;
+    text-align: center;
+    padding-top: 15px;
+
+    h4 {
+      margin-bottom: 10px;
+    }
+  }
+}

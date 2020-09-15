@@ -1,0 +1,41 @@
+<div class="box">
+  <%= form_with url: with_owner_data_path, method: :get, local: true do |f| %>
+    <%= f.hidden_field :search, value: true %>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <%= f.label :by_name, 'Nome', class: 'label' %>
+          <div class="control">
+            <%= f.text_field :by_name, autofocus: true, autocomplete: 'by_name', class: 'input', value: params[:by_name], placeholder: 'Nome' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <%= f.label :state, 'Estado', class: 'label' %>
+          <div class="control">
+            <div class="select">
+              <%= f.select(:state, options_for_select(User::STATES, params[:state]), { include_blank: 'Escolher' }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <%= f.label :city, 'Cidade', class: 'label' %>
+          <div class="control">
+            <%= f.text_field :city, autocomplete: 'city', class: 'input', value: params[:city], placeholder: 'Cidade' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <%= f.submit 'Buscar', class: 'button is-primary' %>
+
+    <%= link_to('Limpar Resultado(s)', with_owner_data_path, alt: 'limpar resultados', class: 'button is-light') if @owners.present? %>
+  <% end %>
+</div>

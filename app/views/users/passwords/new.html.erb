@@ -1,0 +1,26 @@
+<% provide(:page_title, 'Recuperação de senha') %>
+
+<div class="container">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <div class="wrap_logo">
+        <%= image_tag('logo.png', class: 'auth_logo') %>
+        <h1 class="title has-text-weight-light">Love<span class="has-text-weight-normal">Dogs</span></h1>
+      </div>
+      <%= render partial: 'shared/flash' %>
+      <%= render partial: 'users/shared/error_messages', resource: resource %>
+      <div class="box">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <div class="field">
+            <%= f.label :email, class: 'label' %>
+            <div class="control">
+              <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'input' %>
+            </div>
+          </div>
+          <hr>
+          <%= f.submit 'Enviar instruções de recuperação', class: 'button is-primary is-fullwidth has-text-weight-bold button_recover_passaword' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
