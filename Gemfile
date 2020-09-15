@@ -57,3 +57,5 @@ gem 'pg_search'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'friendly_id', '~> 5.2.4'
+gem "figaro"
+gem "fog-aws"
