@@ -6,8 +6,8 @@ class Front::SearchController < Front::BaseController
         :temperament,
         :breed,
         :sex,
-        :vaccine,
-        :height,
+        :vaccinated,
+        :by_size,
         :pelage,
         :pedigree
       )).where.not(user: current_user).order(id: :desc).includes(:user)

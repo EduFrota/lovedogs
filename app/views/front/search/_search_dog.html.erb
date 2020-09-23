@@ -48,10 +48,10 @@
     <div class="columns">
       <div class="column">
         <div class="field">
-          <%= f.label :vaccine, 'Vacinado', class: 'label' %>
+          <%= f.label :vaccinated, 'Vacinado', class: 'label' %>
           <div class="control">
             <div class="select">
-              <%= f.select(:vaccine, options_for_select([['Sim', true], ['Não', false]], params[:vaccine]), { include_blank: 'Escolher' }) %>
+              <%= f.select(:vaccinated, options_for_select([['Sim', true], ['Não', false]], params[:vaccinated]), { include_blank: 'Escolher' }) %>
             </div>
           </div>
         </div>
@@ -59,15 +59,17 @@
 
       <div class="column">
         <div class="field">
-          <%= f.label :height, 'Peso', class: 'label' %>
+          <%= f.label :by_size, 'Tamanho', class: 'label' %>
           <div class="control">
             <div class="select">
-              <%= f.select(:height, options_for_select(Dog::SIZES, params[:height]), { include_blank: 'Escolher' }) %>
+              <%= f.select(:by_size, options_for_select(Dog::SIZES, params[:by_size]), { include_blank: 'Escolher' }) %>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
 
     <div class="columns">
       <div class="column">

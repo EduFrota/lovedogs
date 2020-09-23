@@ -15,6 +15,7 @@ class Dog < ApplicationRecord
             :birth,
             :breed,
             :sex,
+            :size,
             :image,
             :weight,
             :pelage, presence: true
@@ -24,7 +25,7 @@ class Dog < ApplicationRecord
   pg_search_scope :temperament, against: [:temperament]
   scope :breed, -> (breed) { where breed: breed }
   scope :sex, -> (sex) { where sex: sex }
-  scope :vaccinared, -> (vaccinared) { where vaccinared: vaccinared }
+  scope :vaccinated, -> (vaccinated) { where vaccinated: vaccinated }
   scope :by_size, -> (size) { where size: size }
   scope :pelage, -> (pelage) { where pelage: pelage }
   scope :pedigree, -> (pedigree) { where pedigree: pedigree }
