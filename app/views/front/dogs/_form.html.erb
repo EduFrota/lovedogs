@@ -80,9 +80,11 @@
       <div class="columns">
         <div class="column">
           <div class="field">
-            <%= f.label :temperament, class: 'label' %>
+            <%= f.label :temperament, class: 'label is_required' %>
             <div class="control">
-              <%= f.text_field :temperament, autocomplete: 'temperament', class: 'input' %>
+              <div class="select">
+                <%= f.select(:temperament, Dog::TEMPERAMENTS, { include_blank: 'Escolher' }) %>
+              </div>
             </div>
           </div>
         </div>

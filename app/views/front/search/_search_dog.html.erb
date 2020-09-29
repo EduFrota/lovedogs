@@ -15,7 +15,9 @@
         <div class="field">
           <%= f.label :temperament, 'Temperamento', class: 'label' %>
           <div class="control">
-            <%= f.text_field :temperament, autocomplete: 'temperament', class: 'input', value: params[:temperament] %>
+            <div class="select">
+              <%= f.select(:temperament, options_for_select(Dog::TEMPERAMENTS, params[:breed]), { include_blank: 'Escolher' }) %>
+            </div>
           </div>
         </div>
       </div>

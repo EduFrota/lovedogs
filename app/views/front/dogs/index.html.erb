@@ -19,14 +19,14 @@
     <table class="table is-bordered is-fullwidth table-vertical-align-center">
       <thead>
         <tr>
-          <th>#ID</th> <th>Imagem</th> <th>Nome</th> <th>Ações</th>
+           <th>Imagem</th> <th>Nome</th> <th>Ações</th>
         </tr>
       </thead>
 
       <tbody>
         <% @dogs.each do |dog| %>
         <tr>
-          <td><%= dog.id %></td>
+
           <td><%= image_tag(dog.image_url('thumb'), class: 'image is-48x48') if dog.image.present? %></td>
           <td><%= dog.name %></td>
           <td>

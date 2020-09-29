@@ -11,15 +11,17 @@
     background-color: $dark;
 
     img {
+      
       display: block;
       @include border-radius(50%);
-      width: 70px;
+      width: 90px;
+      height: 90px;
     }
 
     p {
       margin: 15px 0 0 0;
       color: lighten($dark, 25);
-      font-size: 23px;
+      font-size: 15px;
       font-weight: bold;
     }
   }

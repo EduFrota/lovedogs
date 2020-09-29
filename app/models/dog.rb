@@ -229,6 +229,21 @@ class Dog < ApplicationRecord
     'Gigante'
   ]
 
+   TEMPERAMENTS = [
+
+    'Brincalhão',
+    'Tímido',
+    'Medroso',
+    'Nervoso',
+    'Agressivo',
+    'Carente', 
+    'Amigável',
+    'Agitado'
+  
+
+   ] 
+    
+
   private
 
   def max_file_size
